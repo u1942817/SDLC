@@ -1,6 +1,6 @@
 body {background-color: darkkhaki}
 
-.container {width:960px;
+.container-fluid {width:960px;
     margin:0 auto;
     padding:10px 25px;
     border:5px solid steelblue;
@@ -21,3 +21,15 @@ body {
 #myHeader {
     text-align: center;
      }        
+.navbar-custom {
+        background-color: darkkhaki;
+    }
+.navbar-brand {
+    color: black;
+    font-family: "Verdana", Helvetica, sans-serif;
+}
+.navbar-link {
+    color: black;
+    font-family: "Verdana", Helvetica, sans-serif;
+
+}
