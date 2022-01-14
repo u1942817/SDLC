@@ -14,11 +14,20 @@
 
 <body>
     <div class="login">
-        <h1>Login</h1>
+        <img src="{{ url_for('static', filename = 'images/WMGTSS_logo.PNG') }}" style="display: inline-block;" width="200" height="150" class="rounded mx-auto d-block">
         <form method="post">
             <input type="text" name="u" placeholder="Username" required="required" />
             <input type="password" name="p" placeholder="Password" required="required" />
             <button type="submit" class="btn btn-primary btn-block btn-large">Login.</button>
         </form>
     </div>
+    <footer>  
+        @Copyright WMGTSS 2022- All Right Reserved.   
+    </footer> 
 </body>
+
+<!--ask jack:
+1. how to sort images out
+2. how to make login part in the body
+3. how to pad out the image
+4.how to link to my homepage -->
