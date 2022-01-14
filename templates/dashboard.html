@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="resourceBoard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all/css" integrity="sha384-lZN37F5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="annoymous">
+</head>
+
+<body style="min-height: 75rem; padding-top: 0.5rem;">
+    <nav class="navbar sticky-top flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Homepage</a>
+        <div class="container-fluid">
+            <a class="navbar-brand col-sm-12 col-md-6 mr-0" href="#">
+                <img src="{{ url_for('static', filename = 'images/WMGTSS_logo.PNG') }}" style="display: inline-block;" width="100" height="75" class="rounded mx-auto d-block">
+ <!--               <span style="display: inline-block;">My Company</span> -->
+              </a>
+    </div>
+    </nav>
+        <div class="jumbotron">
+            <p>Resource Board</p>
+                <p>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <button type="submit" class="btn btn-outline-success btn-lg" role="button">Calendar Board</button>
+                            <button type="submit" class="btn btn-outline-success btn-lg" role="button">Lecture Board</button>
+                            <button type="submit" class="btn btn-outline-success btn-lg" role="button">Q&A Board</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-outline-info" role="button" login>Notice Board</button>
+                            <button type="submit" class="btn btn-outline-info btn-lg" role="button">Resource Board</button>
+                            <button type="submit" class="btn btn-outline-info btn-lg" role="button">Quiz Board</button>
+                        </div>
+                    </div>
+                </p>
+        </div>
+    </div>
+</body>
+</html>
