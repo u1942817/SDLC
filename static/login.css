@@ -252,3 +252,16 @@ form {
 	.sidebar {padding-top: 15px;}
 	.sidebar a {font-size: 18px;}
   }
+#main_2 {
+	transition: margin-left .5s;
+}
+
+h1 {
+	text-align: center;
+	font-family: "Verdana", Helvetica, sans-serif;
+}
+
+p {
+	text-align: center;
+	font-family: "Verdana", Helvetica, sans-serif;
+}
