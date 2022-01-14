@@ -13,6 +13,10 @@ posts = [   {"id": 5, "title": "Powerpoints .PPTs", "Creator": "Claudia Ellis", 
 @app.route('/')
 def index():
     return render_template('dashboard.html', title='Board Title', posts=posts)
+
+@app.route('/layout')
+def layout():
+    return render_template('layout.html')
     
 if __name__ =='__main__':
     app.run(debug=True)  
