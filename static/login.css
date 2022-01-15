@@ -205,20 +205,22 @@ h1 {
 	font-family: "Verdana", Helvetica, sans-serif;
 }
 
-p1 {
+p {
 	text-align: center;
 	font-family: "Verdana", Helvetica, sans-serif;
 }
 
 .column {
-	float: left;
+	float: right;
 	width: 30%;
 	padding: 20px 40px;
 	padding-bottom: 10px;
   }
   
   /* Remove extra left and right margins, due to padding in columns */
-  .row {margin: 0 -5px;}
+  .row {
+	margin: 0 -5px;
+}
   
   /* Clear floats after the columns */
   .row:after {
@@ -233,6 +235,13 @@ p1 {
 	padding: 16px;
 	text-align: center;
 	background-color: #f1f1f1;
+  }
+  .card2 {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	text-align: center;
+	background: rgb(73,89,9);
+	background: linear-gradient(90deg, rgba(73,89,9,1) 0%, rgba(99,110,56,1) 36%, rgba(196,218,110,1) 100%);
   }
   
   /* Responsive columns - one column layout (vertical) on small screens */
