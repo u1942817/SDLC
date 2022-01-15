@@ -64,6 +64,7 @@ footer {
 	width:100%;
 	height: 30px;   /* Height of the footer */ 
 	text-align: center;
+	background-color: #636e38;
  }
 
  .nav-link{
@@ -131,63 +132,6 @@ form {
 	max-width: 200px;
 
 }
- /* /* The side navigation menu 
-.sidebar {
-	margin: 0;
-	padding: 0;
-	width: 200px;
-	background-color: #f1f1f1;
-	position: fixed;
-	height: 100%;
-	overflow: auto;
-	border-right: 1px solid rgb(41, 41, 117);
-  }
-  
-  /* Sidebar links 
-  .sidebar a {
-	display: block;
-	color: black;
-	padding: 16px;
-	text-decoration: none;
-  } /*
-  
-  /* Active/current link 
-  .sidebar a.active {
-	background-color: rgb(41, 41, 117);
-	color: white;
-  }
-  
-  /* Links on mouse-over 
-  .sidebar a:hover:not(.active) {
-	background-color: #636e38;
-	color: white;
-  }
-  
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property 
-  div.content {
-	margin-left: 200px;
-	padding: 1px 16px;
-	height: 1000px;
-  }
-  
-  /* On screens that are less than 700px wide, make the sidebar into a topbar 
-  @media screen and (max-width: 700px) {
-	.sidebar {
-	  width: 100%;
-	  height: auto;
-	  position: relative;
-	}
-	.sidebar a {float: left;}
-	div.content {margin-left: 0;}
-  }
-  
-  /* On screens that are less than 400px, display the bar vertically, instead of horizontally 
-  @media screen and (max-width: 400px) {
-	.sidebar a {
-	  text-align: center;
-	  float: none;
-	}
-  }
 
 /* The sidebar menu */
 .sidebar {
@@ -261,7 +205,41 @@ h1 {
 	font-family: "Verdana", Helvetica, sans-serif;
 }
 
-p {
+p1 {
 	text-align: center;
 	font-family: "Verdana", Helvetica, sans-serif;
 }
+
+.column {
+	float: left;
+	width: 30%;
+	padding: 20px 40px;
+	padding-bottom: 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+	content: "";
+	display: table;
+	clear: both;
+  }
+  
+  /* Style the counter cards */
+  .card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	text-align: center;
+	background-color: #f1f1f1;
+  }
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+	.column {
+	  width: 100%;
+	  display: block;
+	  margin-bottom: 20px;
+	}
+  }
