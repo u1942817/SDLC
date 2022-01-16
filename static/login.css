@@ -215,6 +215,9 @@ p {
 	width: 30%;
 	padding: 20px 40px;
 	padding-bottom: 10px;
+	flex: 0 0 33.333%;
+	display: flex;
+	padding: 10px; /* gutter width */
   }
   
   /* Remove extra left and right margins, due to padding in columns */
@@ -228,20 +231,53 @@ p {
 	display: table;
 	clear: both;
   }
-  
+  .container {
+	  display: flex;
+	  flex-flow: row wrap;
+  }
   /* Style the counter cards */
-  .card {
+  .card { /* All other boards' card tiles */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 	padding: 16px;
 	text-align: center;
 	background-color: #f1f1f1;
+	flex: 0 0 100%;
   }
-  .card2 {
+  .card2 { /* Resource Board card tile */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 	padding: 16px;
 	text-align: center;
 	background: rgb(73,89,9);
 	background: linear-gradient(90deg, rgba(73,89,9,1) 0%, rgba(99,110,56,1) 36%, rgba(196,218,110,1) 100%);
+	flex: 0 0 100%;
+  }
+
+  .card3 { /* Module card tile */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	text-align: left;
+	background: rgb(150, 160, 124);
+	border: solid 4px rgba(196,218,110,1);
+	font-size: large;
+	flex: 0 0 100%;
+  }
+  .card4 { /* Document card tile */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	text-align: left;
+	background: rgb(119, 119, 167);
+	border: solid 4px navy;
+	font-size: large;
+	flex: 0 0 100%;
+  }
+  .card5 { /* Document card tile */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	text-align: left;
+	background: white;
+	border: solid 4px #636e38;
+	font-size: large;
+	flex: 0 0 100%;
   }
   
   /* Responsive columns - one column layout (vertical) on small screens */
