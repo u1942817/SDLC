@@ -288,3 +288,11 @@ p {
 	  margin-bottom: 20px;
 	}
   }
+.btn .btn-lg {
+	background-color: #636e38;
+	border-color: #636e38 
+}
+
+.card-body{
+	background-color: #aeb690;
+}
