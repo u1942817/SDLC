@@ -12,11 +12,23 @@ posts = [   {"id": 5, "title": "Powerpoints .PPTs", "Creator": "Claudia Ellis", 
 
 @app.route('/')
 def index():
-    return render_template('detail.html', title='Board Title', posts=posts)
+    return render_template('homepage.html', title='Board Title', posts=posts)
 
-@app.route('/layout')
-def layout():
-    return render_template('detail.html')
+@app.route('/homepage')
+def homepage():
+    return render_template('homepage.html')
+
+@app.route('/resource_board')
+def resource_board():
+    return render_template('resource_board.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
     
 if __name__ =='__main__':
     app.run(debug=True)  

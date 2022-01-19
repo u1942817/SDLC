@@ -18,7 +18,7 @@
         <div id="main">
             <button class="openbtn" onclick="openNav()">&#9776;</button>
           </div>
-        <a class="active" href="#home">Home</a>
+        <a class="active" href="{{ url_for('homepage')}}">Home</a>
         <img src="{{ url_for('static', filename = 'images/WMGTSS_logo.png') }}" style="display: inline-block;" width="200" height="70" class="rounded mx-auto d-block">
         <form action="#" method="post" class="form-inline my-2 my-lg-0">
             <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search.."> <!--CHECK IN PYTHON CODE-->
@@ -31,8 +31,11 @@
             <a href="#" class="nav-link disabled">Lecture Board</a>
             <a href="#" class="nav-link disabled">Q&A Board</a>
             <a href="#" class="nav-link disabled">Notice Board</a>
-            <a href="#">Resource Board</a>
+            <a href="{{ url_for('resource_board')}}">Resource Board</a>
             <a href="#" class="nav-link disabled">Quiz Board</a>
+
+            <a href="#" class="nav-link disabled sb_footer">Logout</a>
+            <a href="#" class="nav-link disabled sb_footer">Settings</a>
           </div>       
     </div>
     <div id="main_2">
@@ -51,8 +54,8 @@
                 <img src="{{ url_for('static', filename = 'images/calendar_board.png') }}" alt="Avatar" style="width:20%">
                 <div class="container">
                   <h4><b>Calendar Board</b></h4>
-                  <p2>...</p2>
                 </div>
+                <p2>...</p2>
             </div>
         </div>
         <div class="column">
@@ -60,8 +63,8 @@
                 <img src="{{ url_for('static', filename = 'images/lecture_board.png') }}" alt="Avatar" style="width:28%">
                 <div class="container">
                   <h4><b>Lecture Board</b></h4>
-                  <p2>....</p2>
                 </div>
+                <p2>....</p2>
             </div>
         </div>
         <div class="column">
@@ -69,8 +72,8 @@
                 <img src="{{ url_for('static', filename = 'images/quiz_board.png') }}" alt="Avatar" style="width:22%">
                 <div class="container">
                   <h4><b>Quiz Board</b></h4>
-                  <p2>....</p2>
                 </div>
+                <p2>....</p2>
             </div>
         </div>
         <div class="column">
@@ -78,17 +81,21 @@
                 <img src="{{ url_for('static', filename = 'images/notice_board.png') }}" alt="Avatar" style="width:30%">
                 <div class="container">
                   <h4><b>Notice Board</b></h4>
-                  <p2>....</p2>
                 </div>
+                <p2>....</p2>
             </div>
         </div>
         <div class="column">
             <div class="card2">
                 <img src="{{ url_for('static', filename = 'images/resource_board.png') }}" alt="Avatar" style="width:30%">
                 <div class="container">
-                  <h4><b>Resource Board</b></h4>
-                  <p2>PPTs, DOXs, XMLs, PNGs</p2>
+                    <a href="{{ url_for('dashboard')}}" style="color: rgb(34, 34, 34)">
+                        <h4>
+                            <b>Resource Board</b>
+                        </h4>
+                    </a>
                 </div>
+                <p2>PPTs, DOXs, XMLs, PNGs</p2>
             </div>
         </div>
         <div class="column">
@@ -96,11 +103,9 @@
                 <img src="{{ url_for('static', filename = 'images/q&a_board.png') }}" alt="Avatar" style="width:30%">
                 <div class="container">
                   <h4><b>Q&A Board</b></h4>
-                  <p2>....</p2>
                 </div>
+                <p2>....</p2>
             </div>
-        </div>
-
     </div>
 
     <footer>  

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all/css" integrity="sha384-lZN37F5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="annoymous">
 </head>
 
-<body>
+<body class="_login">
     <div class="container">
     <div class="login-logo">
         <img src="{{ url_for('static', filename = 'images/WMGTSS_2.PNG') }}" style="display: inline-block;" width="300" height="200" class="rounded mx-auto d-block">
@@ -21,11 +21,11 @@
         <form method="post">
             <input type="text" name="u" placeholder="Username" required="required" />
             <input type="password" name="p" placeholder="Password" required="required" />
-            <button type="submit" class="btn btn-primary btn-block btn-large">Login.</button>
+            <button type="submit" class="btn btn-primary btn-block btn-large" href="{{ url_for('homepage')}}">Login.</button>
         </form>
     </div>
 </div>
-    <footer>  
+    <footer class="login_footer">  
         @Copyright WMGTSS 2022- All Rights Reserved.   
     </footer> 
 </body>
