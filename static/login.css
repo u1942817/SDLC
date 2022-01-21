@@ -11,7 +11,7 @@
 
 * { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
 
-html { width: 100%; height:100%; overflow:hidden; }
+html { width: 100%; height:100%; overflow:scroll; }
 
 body {
 	background-color: rgb(255, 255, 255);
@@ -67,7 +67,7 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 
 footer {
-	position:absolute;
+	position:fixed;
 	bottom:0;
 	width:100%;
 	height: 30px;   /* Height of the footer */ 
@@ -200,7 +200,7 @@ form {
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
+  @media screen {
 	.sidebar {padding-top: 15px;}
 	.sidebar a {font-size: 18px;}
   }
@@ -303,6 +303,8 @@ p {
 
 .card-body{
 	background-color: #afc9c5;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .nav-link .active {

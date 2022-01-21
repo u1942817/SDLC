@@ -18,7 +18,7 @@
         <div id="main">
             <button class="openbtn" onclick="openNav()">&#9776;</button>
           </div>
-        <a class="active" href="#home">Home</a>
+        <a class="active" href="{{ url_for('homepage')}}">Home</a>
         <img src="{{ url_for('static', filename = 'images/WMGTSS_logo.png') }}" style="display: inline-block;" width="200" height="70" class="rounded mx-auto d-block">
         <form action="#" method="post" class="form-inline my-2 my-lg-0">
             <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search.."> <!--CHECK IN PYTHON CODE-->
