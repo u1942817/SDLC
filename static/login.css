@@ -278,7 +278,7 @@ p {
 	font-size: large;
 	flex: 0 0 100%;
   }
-  .card5 { /* Document card tile */
+  .card5 { /* CREATE, EDIT, DELETE and resource list card tiles */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 	padding: 16px;
 	text-align: left;
@@ -287,10 +287,11 @@ p {
 	font-size: large;
 	flex: 0 0 100%;
   }
-  .card6 { /* Document card tile */
+  .card6 { /* 2nd card in resourceboard tile */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 	padding: 16px;
 	padding-left: 50px;
+	max-height: 330px;
 	text-align: left;
 	background: #aeb690;
 	border-top: solid 4px #636e38;
@@ -298,8 +299,22 @@ p {
 	border-bottom: 4px solid #636e38;
 	font-size: large;
 	flex: 0 0 100%;
+	overflow-y: scroll;
   }
-  .card7 { /* Document card tile */
+  .card7 { /* Resource title card tile */
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	padding-left: 50px;
+	text-align: left;
+	background: #636e38;
+	border-top: solid 4px #636e38;
+	border-right:  4px solid #636e38; 
+	border-bottom: 4px solid #636e38;
+	font-size: large;
+	flex: 0 0 100%;
+  }
+
+  .card8 { /* resource content in resourceboard tile */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
 	padding: 16px;
 	padding-left: 50px;
@@ -329,7 +344,15 @@ p {
 	display: flex;
 	flex-wrap: wrap;
 }
-
+.card-body2{
+	background-color: #afc9c5;
+	display: flex;
+	flex-wrap: wrap;
+}
 .nav-link .active {
 	background-color: #636e38;
+}
+
+.resource_links{
+	color: black;
 }
