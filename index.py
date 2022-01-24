@@ -12,7 +12,7 @@ posts = [   {"id": 5, "title": "Powerpoints .PPTs", "Creator": "Claudia Ellis", 
 
 @app.route('/')
 def index():
-    return render_template('homepage.html', title='Board Title', posts=posts)
+    return render_template('student_dashboard.html', title='Board Title', posts=posts)
 
 @app.route('/homepage')
 def homepage():
@@ -29,6 +29,7 @@ def login():
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+    
     
 if __name__ =='__main__':
     app.run(debug=True)  
