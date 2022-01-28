@@ -1,18 +1,28 @@
 from flask import Flask
 from flask import render_template
+from enum import unique
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
+
+db = SQLAlchemy()
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(50), nullable = False, unique= True)
+    password = db.Column(db.String(50), nullable = False)
+    first_name = db.Column(db.String(100), nullable = False)
+    surname = db.Column(db.String(100), nullable = False)
+    type =db.Column(db.String(50), nullable = False)
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///RB.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 
-posts = [   {"id": 5, "title": "Powerpoints .PPTs", "Creator": "Claudia Ellis", "date": "10 Jan 2022", "count": 2},
-    {"id": 4, "title": "Words .DOXs", "Creator": "Claudia Ellis", "date": "10 Jan 2022", "count": 2},
-    {"id": 3, "title": "Excels .XMLs", "Creator": "Claudia Ellis", "date": "10 Jan 2022", "count": 2},
-    {"id": 2, "title": "Recordings .MP4s", "Creator": "Claudia Ellis", "date": "10 Jan 2022", "count": 2},
-    {"id": 1, "title": "Images .PNGs", "Creator": "Claudia Ellis", "date": "10 Jan 2022", "count": 2}
-]
+db.init_app(app)
 
 @app.route('/')
 def index():
-    return render_template('student_dashboard.html', title='Board Title', posts=posts)
+    return render_template('homepage.html', title='Board Title')
 
 @app.route('/homepage')
 def homepage():

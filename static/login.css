@@ -267,7 +267,8 @@ p {
 	background: rgb(150, 160, 124);
 	border: solid 4px rgba(196,218,110,1);
 	font-size: large;
-	flex: 0 0 100%;
+	flex: 1 1 100%;
+	justify-content: space-around;
   }
   .card4 { /* Document card tile */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
@@ -276,7 +277,8 @@ p {
 	background: rgb(119, 119, 167);
 	border: solid 4px navy;
 	font-size: large;
-	flex: 0 0 100%;
+	flex: 1 1 100%;
+	justify-content: space-evenly;
   }
   .card5 { /* CREATE, EDIT, DELETE and resource list card tiles */
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
