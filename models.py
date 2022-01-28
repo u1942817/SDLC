@@ -49,7 +49,7 @@ posts = [
 
 @app.route('/')
 def index():
-    return render_template('homepage.html', title='Board Title', posts=posts)
+    return render_template('WMGTSS.html', title='Board Title', posts=posts)
 
 @app.route('/homepage')
 def homepage():
@@ -68,8 +68,8 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route("/login_two", methods=['GET', 'POST'])
-def login_two():
+@app.route("/login", methods=['GET', 'POST'])
+def login():
     form = LoginForm()
     if form.validate_on_submit():
         if form.email.data == 'admin@blog.com' and form.password.data == 'password':
@@ -77,7 +77,7 @@ def login_two():
             return redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check username and password', 'danger')
-    return render_template('login_two.html', title='Login', form=form)
+    return render_template('login.html', title='Login', form=form)
 
 @app.route('/dashboard')
 def dashboard():
