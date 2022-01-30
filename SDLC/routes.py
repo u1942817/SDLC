@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, redirect
 from SDLC import app, db
 from SDLC.forms import RegistrationForm, LoginForm, PostForm
 from SDLC.models import User, Post
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 posts = [
     {
@@ -65,7 +65,11 @@ def logout():
     logout_user()
     return redirect(url_for ('homepage'))
 
-
+@app.route("/account")
+@login_required # this ensures the user logins before accessing this page
+def account():
+    form = PostForm()
+    return render_template('account.html', title='Account', form=form)
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
