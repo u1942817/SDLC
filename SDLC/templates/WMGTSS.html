@@ -1,0 +1,31 @@
+{% extends "login_layout.html" %}
+{% block content %}
+<div>
+    <div id="main_3">
+        <h1>
+            WMG Teaching Support System
+        </h1>
+        <p>
+            "WMG is an academic department at the University of Warwick and is the leading international role model 
+            for successful collaboration between academia and the public and private sectors, driving innovation in science, technology and engineering, 
+            to develop the brightest ideas and talent that will shape our future."
+        </p>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <a href="{{ url_for('login')}}" style="color: rgb(34, 34, 34)">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="container">
+                        <a href="{{ url_for('register')}}" style="color: rgb(34, 34, 34)">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

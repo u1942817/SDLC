@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div id="main_2">
+        <h1>
+            Resource Board
+        </h1>
+        <p>
+            The resource board holds all materials such as powerpoints, word documents, excel spreadsheets, videos and images that a student may require
+            for each module.
+        </p>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="card3">
+                <img src="{{ url_for('static', filename = 'images/resource_board.png') }}" alt="Avatar" style="width:30%">
+                <div class="container">
+                  <h4><b>Modules</b></h4>
+                  <ul>
+                      <li>Internet of Things</li>
+                      <li>
+                          <a href="{{ url_for('resource_board')}}" style="color: rgb(34, 34, 34)">Software Development Life Cycle</a></li>
+                      <li>Machine Intelligence</li>
+                      <li>Applied Maths</li>
+                      <li>...</li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card5">
+                <div class="container">
+                    <div class="content-section">
+                        <form method="POST" action="">
+                           {{ form.hidden_tag() }}
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4">New Post</legend>
+                                <div class="form-group">
+                                    {{ form.title.label(class="form-control-label") }}
+                                    {% if form.title.errors %}
+                                        {{ form.title(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.title.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.title(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.content.label(class="form-control-label") }}
+                                    {% if form.content.errors %}
+                                        {{ form.content(class="form-control form-control-lg is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.content.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.content(class="form-control form-control-lg") }}
+                                    {% endif %}
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-outline-info") }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card4">
+                <img src="{{ url_for('static', filename = 'images/resource_board.png') }}" alt="Avatar" style="width:30%">
+                <div class="container">
+                  <h4><b>Documents</b></h4>
+                  <ul>
+                      <li>Powerpoints .PPT</li>
+                      <li>Word Documents .DOX</li>
+                      <li>Excel Spreadsheets .XML</li>
+                      <li>Videos .MVP</li>
+                      <li>...</li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
