@@ -1,1 +1,80 @@
-#map the route --> IN INDEX.PY
+from flask import render_template, url_for, flash, redirect
+from SDLC import app, db
+from SDLC.forms import RegistrationForm, LoginForm, PostForm
+from SDLC.models import User, Post
+from flask_login import login_user, current_user, logout_user
+
+posts = [
+    {
+        'author': 'Claudia Ellis',
+        'title': 'Board 1',
+        'content': 'First post content',
+        'date_posted': 'January 17, 2022'
+    },
+    {
+        'author': 'Ronnie Mather',
+        'title': 'Post 2',
+        'content': 'Second post content',
+        'date_posted': 'January 20, 2022'
+    }
+]
+
+@app.route('/')
+def index():
+    return render_template('homepage.html', title='Board Title', posts=posts)
+
+@app.route('/homepage')
+def homepage():
+    return render_template('homepage.html', title='Homepage')
+
+@app.route('/resource_board')
+def resource_board():
+    return render_template('resource_board.html', title='Resource Board')
+
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('homepage'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data, password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created, you are now able to login! ', 'success')
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('homepage'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first() # finds the first (and only) user with that email
+        if user:
+            login_user(user, remember=form.remember.data)
+            return redirect(url_for('homepage'))
+        else:
+            flash('Login Unsuccessful. Please check email and password', 'danger')
+    return render_template('login.html', title='Login', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for ('homepage'))
+
+
+
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Post has been created', 'success')
+        return redirect(url_for('dashboard'))
+    return render_template('dashboard.html', title='Dashboard', form=form)
+
+@app.route('/student_dashboard')
+def student_dashboard():
+    return render_template('student_dashboard.html', title='Student View')
