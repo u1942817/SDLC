@@ -2,6 +2,7 @@ from datetime import datetime
 from SDLC import db, login_manager
 from flask_login import UserMixin
 
+
 @login_manager.user_loader # decorator 
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -28,3 +29,4 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+    
