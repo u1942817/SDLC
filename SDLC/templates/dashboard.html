@@ -12,7 +12,11 @@
     <div class="row">
         <div class="column">
             <div class="card3">
-                <img src="{{ url_for('static', filename = 'images/resource_board.png') }}" alt="Avatar" style="width:30%">
+                {% if current_user.is_authenticated %}
+                <img src="{{ url_for('static', filename = 'images/module.png') }}" alt="Avatar" style="width:30%">
+                {% else %}
+                    <img src="{{ url_for('static', filename = 'images/module.png') }}" alt="Avatar" style="width:40%">
+                {% endif %}
                 <div class="container">
                   <h4><b>Modules</b></h4>
                   <ul>
@@ -26,6 +30,7 @@
                 </div>
             </div>
         </div>
+        {% if current_user.is_authenticated %}
         <div class="column">
             <div class="card5">
                 <div class="container">
@@ -33,7 +38,7 @@
                         <form method="POST" action="">
                            {{ form.hidden_tag() }}
                             <fieldset class="form-group">
-                                <legend class="border-bottom mb-4">New Post</legend>
+                                <legend class="border-bottom mb-4">New Board</legend>
                                 <div class="form-group">
                                     {{ form.title.label(class="form-control-label") }}
                                     {% if form.title.errors %}
@@ -69,9 +74,15 @@
                 </div>
             </div>
         </div>
+        {% else %} 
+        {% endif %}
         <div class="column">
             <div class="card4">
-                <img src="{{ url_for('static', filename = 'images/resource_board.png') }}" alt="Avatar" style="width:30%">
+                {% if current_user.is_authenticated %}
+                <img src="{{ url_for('static', filename = 'images/documents.png') }}" alt="Avatar" style="width:30%">
+                {% else %}
+                    <img src="{{ url_for('static', filename = 'images/documents.png') }}" alt="Avatar" style="width:30%">
+                {% endif %}
                 <div class="container">
                   <h4><b>Documents</b></h4>
                   <ul>

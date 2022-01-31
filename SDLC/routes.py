@@ -1,31 +1,15 @@
 from flask import render_template, url_for, flash, redirect
 from SDLC import app, db
-from SDLC.forms import RegistrationForm, LoginForm, PostForm
+from SDLC.forms import RegistrationForm, LoginForm, PostForm, UpdateAccountForm
 from SDLC.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
-posts = [
-    {
-        'author': 'Claudia Ellis',
-        'title': 'Board 1',
-        'content': 'First post content',
-        'date_posted': 'January 17, 2022'
-    },
-    {
-        'author': 'Ronnie Mather',
-        'title': 'Post 2',
-        'content': 'Second post content',
-        'date_posted': 'January 20, 2022'
-    }
-]
-
 @app.route('/')
-def index():
+@app.route("/homepage")
+def homepage():
+    posts= Post.query.all()
     return render_template('homepage.html', title='Board Title', posts=posts)
 
-@app.route('/homepage')
-def homepage():
-    return render_template('homepage.html', title='Homepage')
 
 @app.route('/resource_board')
 def resource_board():
@@ -71,13 +55,17 @@ def account():
     form = PostForm()
     return render_template('account.html', title='Account', form=form)
 
-@app.route('/dashboard', methods=['GET', 'POST'])
+@app.route('/dashboard/new', methods=['GET', 'POST'])
 def dashboard():
     form = PostForm()
     if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
         flash('Post has been created', 'success')
-        return redirect(url_for('dashboard'))
-    return render_template('dashboard.html', title='Dashboard', form=form)
+        return redirect(url_for('resource_board'))
+    return render_template('dashboard.html', title='Dashboard', form=form, legend='New Post')
+
 
 @app.route('/student_dashboard')
 def student_dashboard():
