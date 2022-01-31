@@ -1,19 +1,16 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from SDLC import app, db
-from SDLC.forms import RegistrationForm, LoginForm, PostForm, UpdateAccountForm
+from SDLC.forms import RegistrationForm, LoginForm, PostForm
 from SDLC.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
+from werkzeug.utils import secure_filename
+import os
 
 @app.route('/')
 @app.route("/homepage")
 def homepage():
     posts= Post.query.all()
     return render_template('homepage.html', title='Board Title', posts=posts)
-
-
-@app.route('/resource_board')
-def resource_board():
-    return render_template('resource_board.html', title='Resource Board')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -55,17 +52,22 @@ def account():
     form = PostForm()
     return render_template('account.html', title='Account', form=form)
 
-@app.route('/dashboard/new', methods=['GET', 'POST'])
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Post has been created', 'success')
+        file = form.file.data # grabs the file
+        file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename))) #save the file to documents
+        flash('File has been uploaded', 'success')
         return redirect(url_for('resource_board'))
     return render_template('dashboard.html', title='Dashboard', form=form, legend='New Post')
 
+@app.route('/resource_board')
+def posts():
+    posts = Post.query.order_by(Post.date_posted).all()
+    for post in posts:
+        print(post.id)
+    return render_template('resource_board.html', posts=posts)
 
 @app.route('/student_dashboard')
 def student_dashboard():
