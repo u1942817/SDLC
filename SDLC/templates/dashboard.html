@@ -19,14 +19,14 @@
                 {% endif %}
                 <div class="container">
                   <h4><b>Modules</b></h4>
-                  <ul>
-                      <li>Internet of Things</li>
-                      <li>
-                          <a href="{{ url_for('posts')}}" style="color: rgb(34, 34, 34)">Software Development Life Cycle</a></li>
-                      <li>Machine Intelligence</li>
-                      <li>Applied Maths</li>
-                      <li>...</li>
-                  </ul>
+                </div>
+                <div class="media-body">
+                    <ul>
+                    {% for post in posts %}
+                        <li>
+                            <a href="{{ url_for('posts')}}" style="color: rgb(34, 34, 34)">{{ post.title }}</a></li>
+                    {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
@@ -64,9 +64,6 @@
                                     {% else %}
                                         {{ form.content(class="form-control form-control-lg") }}
                                     {% endif %}
-                                </div>
-                                <div>
-                                    {{form.file()}}
                                 </div>
                             </fieldset>
                             <div class="form-group">

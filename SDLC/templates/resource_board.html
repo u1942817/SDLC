@@ -39,29 +39,27 @@
             </div>
             <div class="card6" style="max-width: 70rem;">
             <div class="card-body">
-              {% for post in posts %}
               <div class="card7" style="max-width: 9rem;">
                 <div class="class-body">
-                  <h5 class="card-title text-center">{{ post.title }}</h5>
+                  <h5 class="card-title text-center">Recent Posts</h5>
                 </div>
               </div>
-                <div class="card8" style="max-width: 53rem;">
-                    <div class="class-body">
-                      <article class="media content-section">
-                        <div class="media-body">
-                          <div class="article-metadata">
-                            <h7 class="mr-2" href="#">{{ post.author.username }}</h7>
-                            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-                          </div>
-                          <p class="article-content">{{ post.content }}</p>
-                        </div>
-                        <form action="{{ url_for('upload_files') }}" class="dropzone">
-                        </form>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.js"></script>
-                      </article>
+              <div class="card8" style="max-width: 53rem;">
+                <div class="class-body">
+                  {% for post in posts %}
+                  <article class="media content-section">
+                    <div class="media-body">
+                      <div class="article-metadata">
+                        <h7 class="mr-2" href="#">{{ post.author.username }}</h7>
+                        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                      </div>
+                      <h2>{{ post.title }}</h2>
+                      <p class="article-content">{{ post.content }}</p>
                     </div>
-                  </div>
-              {% endfor %}
+                  </article>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
           </div>
         </div>
