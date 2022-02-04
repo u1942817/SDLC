@@ -164,7 +164,7 @@ def student_dashboard():
 
 
     #---------------------------------------------------
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, send_from_directory
 from SDLC import app, db
 from SDLC.forms import RegistrationForm, LoginForm, PostForm
 from SDLC.models import User, Post
@@ -230,17 +230,38 @@ def dashboard():
         return redirect(url_for('posts'))
     return render_template('dashboard.html', title='Dashboard', form=form, posts=posts, legend='New Post')
 
+
+
+
+
+
+'''@app.route('/')
+def index():
+    files = os.listdir(app.config['UPLOAD_PATH'])
+    print(files)
+    return render_template('resource_board.html', files=files)'''
+
 @app.route('/resource_board')
 def posts():
+    files = os.listdir(app.config['UPLOAD_PATH'])
+    # print(files)
+    # print("Hello World")
+    # files = os.listdir('.')
+    # print(files)
     posts = Post.query.order_by(Post.date_posted).all()
     for post in posts:
         print(post.id)
-    return render_template('resource_board.html', posts=posts)
+    return render_template('resource_board.html', posts=posts, files=files)
 
-@app.route("/resource_board/upload", methods=["GET", "POST"])
-def upload():
+@app.route("/resource_board", methods=["GET", "POST"])
+def upload_files():
     if request.method == 'POST':
         file = request.files["file"]
         print(file)
-        return redirect(request.url)
-    return render_template("resource_board.html")
+        return redirect(url_for('index'))
+    files = os.listdir(app.config['UPLOAD_PATH'])
+    print(files)
+    print("Hello World")
+    return render_template("resource_board.html", files=files)
+
+
