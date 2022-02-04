@@ -218,7 +218,7 @@ def account():
     form = PostForm()
     return render_template('account.html', title='Account', form=form)
 
-@app.route('/dashboard', methods=['GET', 'POST'])
+@app.route('/dashboard', methods=['GET', 'POST']) 
 def dashboard():
     form = PostForm()
     posts = Post.query.order_by(Post.date_posted).all()
@@ -237,6 +237,10 @@ def posts():
         print(post.id)
     return render_template('resource_board.html', posts=posts)
 
-@app.route('/student_dashboard')
-def student_dashboard():
-    return render_template('student_dashboard.html', title='Student View')
+@app.route("/resource_board/upload", methods=["GET", "POST"])
+def upload():
+    if request.method == 'POST':
+        file = request.files["file"]
+        print(file)
+        return redirect(request.url)
+    return render_template("resource_board.html")

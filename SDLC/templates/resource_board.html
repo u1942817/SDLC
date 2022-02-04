@@ -9,6 +9,7 @@
             for each module.
         </p>
     </div>
+    {% for post in posts %}
     <div class="card text-center">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
@@ -38,30 +39,40 @@
                 </div>
             </div>
             <div class="card6" style="max-width: 70rem;">
+              <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <h7 class="mr-2" href="#">{{ post.author.username }}</h7>
+                    <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                  </div>
+                  <p class="article-content">{{ post.content }}</p>
+                </div>
+              </article>
             <div class="card-body">
-              <div class="card7" style="max-width: 9rem;">
+              <div class="card7" style="max-width: 15rem;">
                 <div class="class-body">
-                  <h5 class="card-title text-center">Recent Posts</h5>
+                  <h5 class="card-title text-center">Powerpoints</h5>
                 </div>
               </div>
-              <div class="card8" style="max-width: 53rem;">
+              <div class="card8" style="max-width: 47rem;">
                 <div class="class-body">
-                  {% for post in posts %}
-                  <article class="media content-section">
-                    <div class="media-body">
-                      <div class="article-metadata">
-                        <h7 class="mr-2" href="#">{{ post.author.username }}</h7>
-                        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                  <form action="/resource_board/upload" method="POST" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                      <label>Select File!</label>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="file" id="file">
+                        <label class="custom-file-label" for="file">Select File...</label>
                       </div>
-                      <h2>{{ post.title }}</h2>
-                      <p class="article-content">{{ post.content }}</p>
                     </div>
-                  </article>
-                  {% endfor %}
+            
+                    <button type="submit" class="btn btn-outline-success">Upload</button>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
     </div>
+    {% endfor %}
 {% endblock %}

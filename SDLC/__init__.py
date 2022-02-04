@@ -2,14 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 import os
+basedir = os.path.abspath(os.path.dirname(__file__)) #
 
 
-app = Flask(__name__, static_folder="static")
+
+app = Flask(__name__,)
 
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-
-app.config["UPLOAD_PATH"] = 'Users\cellis1\Documents\GitHub\SDLC\SDLC\static\documents'
 app.config["ALLOWED_EXTENSIONS"] = ["jpg", "png", "mov", "mp4", "mpg"]
 app.config["MAX_CONTENT_LENGTH"] = 1000 * 1024 * 1024  # 1000mb
 

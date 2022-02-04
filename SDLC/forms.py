@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FileField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, FileField # used to create forms for the login/register and posts
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, InputRequired
 from flask_wtf.file import FileField, FileAllowed
 from SDLC.models import User
