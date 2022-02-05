@@ -7,9 +7,9 @@ from SDLC.models import User
 
 
 
-class RegistrationForm(FlaskForm):
-    username = StringField('Username',
-                           validators=[DataRequired(), Length(min=2, max=20)])
+class RegistrationForm(FlaskForm): # FlaskForm is used for the registeration form imported from wtforms
+    username = StringField('Username', 
+                           validators=[DataRequired(), Length(min=2, max=20)]) # when filling out the forms, the user must fill out a username between 2-20 characters 
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -18,8 +18,9 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username): # this notifies the user that the specific username has been taken
-        user = User.query.filter_by(username=username.data).first()
-        if user:
+        user = User.query.filter_by(username=username.data).first() # in order to validate, the db must query the first name 
+                                                                            #that appears that matches the username entered 
+        if user: # if so, the user is prompted to enter another username 
             raise ValidationError('That username is taken, please choose another one.')
     
     def validate_email(self, email): # this notifies the user that the specific email has been taken
