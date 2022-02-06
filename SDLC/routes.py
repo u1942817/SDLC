@@ -15,7 +15,7 @@ def dashboard():
     form = PostForm() # form is equal to the form created in forms.py
     posts = Post.query.order_by(Post.date_posted).all() # post is equal to all attritbues within the Post model ordered by the date created
     if form.validate_on_submit(): # the form must be validated from wtforms.validators
-        post = Post(title=form.title.data, content=form.content.data, author=current_user) # post data is filled out, title, content and author 
+        post = Post(title=form.title.data, content=form.content.data, user_id=current_user) # post data is filled out, title, content and author 
         db.session.add(post) # this is added to the database to be stored
         db.session.commit() # in order to successfully store the data, a commit has to take place
         flash('Post has been created', 'success') # this provides the user a visual that the post has been successfully made
@@ -62,7 +62,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first() # finds the first (and only) user with that email
-        if user:
+        if user.password==form.password.data:
             login_user(user, remember=form.remember.data)
             return redirect(url_for('homepage'))
         else:

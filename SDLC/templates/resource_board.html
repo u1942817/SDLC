@@ -60,14 +60,23 @@
                     <p><input type="file" name="file"></p>
                     <p><input type="submit" value="Submit"></p>
                   </form>
-                  <hr>
-                  {% for file in files %}
-                    <a href="/static/documents/{{file}}", style="color: rgb(34, 34, 34)">{{ file }}</a> <br/>
-                  {% endfor %}
                 </div>
               </div>
-            </div>
           </div>
+          <div class="card-body">
+            <div class="card7" style="max-width: 15rem;">
+              <div class="class-body">
+                <h5 class="card-title text-center">Resource Materials</h5>
+              </div>
+            </div>
+            <div class="card8" style="max-width: 47rem;">
+              <div class="class-body">
+                {% for file in files %}
+                  <a href="/static/documents/{{file}}", style="color: rgb(34, 34, 34)">{{ file }}</a> <br/>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
         </div>
     </div>
     {% endfor %}
