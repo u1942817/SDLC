@@ -35,7 +35,7 @@ def upload_files():
     if request.method == 'POST':
         file = request.files["file"] 
         print(file)
-        return redirect(url_for('index'))
+        return redirect(url_for('dashboard'))
     files = os.listdir(app.config['UPLOAD_PATH']) # files is used to find the correct path from the __init__ file
     print(files)
     return render_template("resource_board.html", files=files)
