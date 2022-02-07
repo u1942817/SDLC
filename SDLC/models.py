@@ -1,7 +1,6 @@
 from datetime import datetime
 from SDLC import db, login_manager
 from flask_login import UserMixin
-import os
 
 
 @login_manager.user_loader # decorator allows the modification of function (in routes.py)
@@ -30,15 +29,3 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
-
-''''
-from routes import file_upload
-
-@file_upload.Model
-class blogModel(db.Model):
-   __tablename__ = "blogs"
-   id = db.Column(db.Integer, primary_key=True)
-
-   # Use flask-file-upload's `file_upload.Column()` to associate a file with a SQLAlchemy Model:
-   my_placeholder = file_upload.Column()
-   my_video = file_upload.Column()'''

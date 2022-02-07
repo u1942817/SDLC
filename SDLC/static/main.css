@@ -377,6 +377,7 @@ p {
 	display: flex;
 	flex-wrap: wrap;
 }
+/* shows which links are active in the nav bar */
 .nav-link .active {
 	background-color: #636e38;
 }

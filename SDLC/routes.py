@@ -22,21 +22,21 @@ def dashboard():
         return redirect(url_for('posts')) 
     return render_template('dashboard.html', title='Dashboard', form=form, posts=posts, legend='New Post') # the app returns the dashboard.html
 
-@app.route('/resource_board')
+@app.route('/resource_board') # the app looks for the /resource board url
 def posts():
-    files = os.listdir(app.config['UPLOAD_PATH'])
-    posts = Post.query.order_by(Post.date_posted).all()
-    for post in posts:
+    files = os.listdir(app.config['UPLOAD_PATH']) # files is used to find the correct path from the __init__ file
+    posts = Post.query.order_by(Post.date_posted).all() # all posts are queried and ordered by date posted and referenced by {%for file in files %} in refernece board html
+    for post in posts: # this checks that the posts have been identified and ordered
         print(post.id)
     return render_template('resource_board.html', posts=posts, files=files)
 
-@app.route("/resource_board", methods=["GET", "POST"])
+@app.route("/resource_board", methods=["GET", "POST"]) # the app looks for the /resource board url and uses the 'GET' and 'POST' methods
 def upload_files():
     if request.method == 'POST':
-        file = request.files["file"]
+        file = request.files["file"] 
         print(file)
         return redirect(url_for('index'))
-    files = os.listdir(app.config['UPLOAD_PATH'])
+    files = os.listdir(app.config['UPLOAD_PATH']) # files is used to find the correct path from the __init__ file
     print(files)
     return render_template("resource_board.html", files=files)
 
@@ -57,16 +57,16 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated:
+    if current_user.is_authenticated: # when the current user is authenticated through login, direct them to the homepage
         return redirect(url_for('homepage'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first() # finds the first (and only) user with that email
-        if user.password==form.password.data:
+        if user.password==form.password.data: # if password is the same as the password in the database direct them to the homepage 
             login_user(user, remember=form.remember.data)
             return redirect(url_for('homepage'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Login Unsuccessful. Please check email and password', 'danger') #  if login username or password is incorrect, flash a login unsuccessful message
     return render_template('login.html', title='Login', form=form)
 
 @app.route("/logout")
